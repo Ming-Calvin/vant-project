@@ -14,7 +14,7 @@
 
         <!--level2-->
         <div class="level2">
-          <TreeSelect :columns="item.children" :orgTreeArr="orgTreeArr"></TreeSelect>
+          <TreeSelect :columns="item.children" :orgTreeArr="orgTreeArr" v-show="item.isShow"></TreeSelect>
           <van-checkbox-group v-model="result">
             <van-checkbox
                 v-for="(sItem, sIndex) in peopleList[item.id]"
@@ -40,16 +40,7 @@ export default {
     return {
       orgTreeArr: [1, 2, 3],
       result: [],
-      peopleList: [[], [], [{
-        name: 'xm',
-        value: 'xm'
-      }, {
-        name: 'xh',
-        value: 'xh'
-      }], [{
-        name: 'xg',
-        value: 'xg'
-      }]]
+      peopleList: []
     }
   },
   props: {
@@ -68,6 +59,9 @@ export default {
       this.$set(this.columns, index, { ...this.columns[index], isShow: !this.columns[index].isShow })
     }
   },
+  created() {
+
+  }
 }
 
 </script>
