@@ -1,6 +1,17 @@
 <template>
   <div id="app">
-    <TreeSelect :orgTreeArr="orgTreeArr" :columns="columns" :peopleList="peopleList"></TreeSelect>
+    <TreeSelect :orgTreeArr.sync="orgTreeArr"
+                :columns="columns"
+                v-if="peopleList"
+                :treeValue.sync="modelValue"
+                :peopleList="peopleList">
+    </TreeSelect>
+
+    <!--<div @click="onClick"> click </div>-->
+
+    <!--<ModelExplain v-model:modelValue></ModelExplain>-->
+
+    <!--<ModelExplain :modelValue="modelValue" @modelChange="modelChange"></ModelExplain>-->
   </div>
 </template>
 
@@ -8,17 +19,17 @@
 
 import TreeSelect from "@/components/TreeSelect.vue";
 import {getTreeSelect, peopleList} from "@/api/user";
+import ModelExplain from "@/components/ModelExplain.vue";
 
 export default {
   name: 'App',
-  components: {TreeSelect},
+  components: {ModelExplain, TreeSelect},
   data() {
     return {
-      orgTreeArr: [1, 2, 3],
+      orgTreeArr: [],
       columns: [],
-      show: false,
-      dialogVisible: false,
-      peopleList: []
+      peopleList: null,
+      modelValue: 0
     }
   },
   created() {
@@ -27,15 +38,16 @@ export default {
     })
 
     peopleList().then(res => {
-      this.peopleList = res.data
-
-      console.log(this.peopleList)
+      this.peopleList = res
     })
   },
   methods: {
-    showPopup() {
-      this.show = true;
+    onClick() {
+      console.log(this.orgTreeArr)
     },
+    modelChange(val) {
+      this.modelValue = val
+    }
   }
 }
 </script>

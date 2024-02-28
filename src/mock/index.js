@@ -4,4 +4,4 @@ const Mock = require('mockjs')
 Mock.mock('/api/treeSelect', 'get', require('./data/treeSelect.json'))
 
 // 人员列表
-Mock.mock('/api/peopleList', 'get', require('./data/peopleList.json'))
+Mock.mock('/api/peopleList', 'get', require('./data/peopleList.js'))
