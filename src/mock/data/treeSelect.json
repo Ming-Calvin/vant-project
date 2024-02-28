@@ -4,8 +4,12 @@
     "name": "@province",
     "isShow": false,
     "children|2": [{
-      "id+1": 100,
-      "name": "@city"
+      "id|+1": 100,
+      "name": "@city",
+      "children|2": [{
+        "id|+1": 100,
+        "name": "@name"
+      }]
     }]
   }]
 }

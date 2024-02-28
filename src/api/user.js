@@ -6,3 +6,10 @@ export function getTreeSelect() {
     method: "get"
   })
 }
+
+export function peopleList() {
+  return request({
+    url: "/api/peopleList",
+    method: "get"
+  })
+}

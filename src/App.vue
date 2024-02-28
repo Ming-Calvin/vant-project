@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <TreeSelect :orgTreeArr="orgTreeArr" :columns="columns"></TreeSelect>
+    <TreeSelect :orgTreeArr="orgTreeArr" :columns="columns" :peopleList="peopleList"></TreeSelect>
   </div>
 </template>
 
 <script>
 
 import TreeSelect from "@/components/TreeSelect.vue";
-import {getTreeSelect} from "@/api/user";
+import {getTreeSelect, peopleList} from "@/api/user";
 
 export default {
   name: 'App',
@@ -18,11 +18,18 @@ export default {
       columns: [],
       show: false,
       dialogVisible: false,
+      peopleList: []
     }
   },
   created() {
     getTreeSelect().then(res => {
       this.columns = res.data
+    })
+
+    peopleList().then(res => {
+      this.peopleList = res.data
+
+      console.log(this.peopleList)
     })
   },
   methods: {

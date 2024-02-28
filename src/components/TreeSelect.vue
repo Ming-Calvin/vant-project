@@ -15,16 +15,19 @@
         <!--level2-->
         <div class="level2">
           <TreeSelect :columns="item.children" :orgTreeArr="orgTreeArr" v-show="item.isShow"></TreeSelect>
-          <van-checkbox-group v-model="result">
-            <van-checkbox
-                v-for="(sItem, sIndex) in peopleList[item.id]"
-                :key="sIndex"
-                :name="sItem.value"
-                shape="square"
-            >
-              <div> {{ sItem.name }}</div>
-            </van-checkbox>
-          </van-checkbox-group>
+
+          {{ item }}
+<!--          <van-checkbox-group v-model="result">-->
+<!--            <van-checkbox-->
+<!--                v-for="(sItem, sIndex) in peopleList[index]"-->
+<!--                :key="sIndex"-->
+<!--                :name="sItem.value"-->
+<!--                shape="square"-->
+<!--            >-->
+<!--              {{ item.id }}-->
+<!--              <div> {{ sItem.name }}</div>-->
+<!--            </van-checkbox>-->
+<!--          </van-checkbox-group>-->
         </div>
       </div>
     </van-checkbox-group>
@@ -40,12 +43,12 @@ export default {
     return {
       orgTreeArr: [1, 2, 3],
       result: [],
-      peopleList: []
     }
   },
   props: {
     // orgTreeArr: { type: Array },
-    columns: { type: Array }
+    columns: { type: Array },
+    peopleList: { type: Array }
   },
   methods: {
     // 图标展示
@@ -59,9 +62,6 @@ export default {
       this.$set(this.columns, index, { ...this.columns[index], isShow: !this.columns[index].isShow })
     }
   },
-  created() {
-
-  }
 }
 
 </script>
@@ -84,5 +84,9 @@ export default {
     margin-right: 10px;
     height: 28px;
   }
+}
+
+.level2 {
+  padding: 0 0 0 30px;
 }
 </style>
