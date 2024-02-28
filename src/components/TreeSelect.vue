@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import {getTreeSelect} from "@/api/user";
+
 export default {
   name: 'TreeSelect',
   data() {
@@ -65,7 +67,7 @@ export default {
     toggleShow(index) {
       this.$set(this.columns, index, { ...this.columns[index], isShow: !this.columns[index].isShow })
     }
-  }
+  },
 }
 
 </script>
